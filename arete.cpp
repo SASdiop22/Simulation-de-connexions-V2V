@@ -1,4 +1,4 @@
-#include "Arete.h"
+#include "arete.h"
 
 Arete::Arete(Noeud* debut, Noeud* fin)
     : debut(debut), fin(fin) {
