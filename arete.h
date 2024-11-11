@@ -1,20 +1,42 @@
-#ifndef ARETE_H
-#define ARETE_H
+#ifndef ARETE_H_INCLUDED
+#define ARETE_H_INCLUDED
 
-#include "Sommet.h"
+
+#include "noeud.h"
+#include <cmath>
+#include <string>
+using namespace std;
 
 class Arete {
 private:
-    int poids;
-    Sommet* debut;
-    Sommet* arrivee;
-    friend class Graphe;
+    Noeud* debut;
+    Noeud* fin;
+    string id;   // ID de l'ar�te provenant de OSM
+    string type; // Type de route (autoroute, nationale, etc.)
+
 public:
-    Arete(Sommet* s1, Sommet* s2, int donnee);
-    Sommet* getDebut() const;
-    Sommet* getArrivee() const;
-    int getPoids() const ;
-    Arete& operator=(const Arete& other);
+    Arete(Noeud* debut, Noeud* fin);
+
+    Noeud* getDebut() const;
+    void setDebut(Noeud* newDebut);
+
+    Noeud* getFin() const;
+    void setFin(Noeud* newFin);
+
+    double getDistance() const;
+
+    //void calculerDistance();// M�thode pour calculer la distance entre les n�uds
+    double getDistanceLambert93() const;
+
+    string getId() const;
+    void setId(const string& newId);
+
+   string getType() const;
+    void setType(const string& newType);
+
+
 };
 
-#endif // ARETE_H
+
+
+#endif // ARETE_H_INCLUDED

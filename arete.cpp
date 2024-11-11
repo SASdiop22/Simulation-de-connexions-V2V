@@ -1,23 +1,54 @@
 #include "Arete.h"
 
-Arete::Arete(Sommet* s1, Sommet* s2, int donnee) : debut(s1), arrivee(s2), poids{donnee}
-{}
+Arete::Arete(Noeud* debut, Noeud* fin)
+    : debut(debut), fin(fin) {
 
-Sommet* Arete::getDebut() const
- { return debut; }
-
-Sommet* Arete::getArrivee() const
- { return arrivee; }
-int Arete:: getPoids() const
-{
-    return poids;
 }
 
-Arete& Arete::operator=(const Arete& other) {
-    if (this != &other) {
-        poids = other.poids;
-        debut = other.debut;
-        arrivee = other.arrivee;
-    }
-    return *this;
+
+double Arete::getDistanceLambert93() const{
+    double dx = debut->X_lambert93() - fin->X_lambert93();
+    double dy = debut->Y_lambert93() - fin->Y_lambert93();
+    return sqrt(dx * dx + dy * dy);
+
+}
+Noeud* Arete::getDebut() const {
+    return debut;
+}
+
+void Arete::setDebut(Noeud* newDebut) {
+    debut = newDebut;
+
+}
+
+Noeud* Arete::getFin() const {
+    return fin;
+}
+
+void Arete::setFin(Noeud* newFin) {
+    fin = newFin;
+
+}
+
+double Arete::getDistance() const {
+    double dx = debut->getLongitude() - fin->getLongitude();
+    double dy = debut->getLatitude() - fin->getLatitude();
+    return sqrt(dx * dx + dy * dy);
+
+}
+
+std::string Arete::getId() const {
+    return id;
+}
+
+void Arete::setId(const std::string& newId) {
+    id = newId;
+}
+
+std::string Arete::getType() const {
+    return type;
+}
+
+void Arete::setType(const std::string& newType) {
+    type = newType;
 }
