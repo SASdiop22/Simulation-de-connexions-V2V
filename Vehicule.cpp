@@ -31,13 +31,13 @@ void Vehicule::connecteAvec(Vehicule* VB)
     }
 }
 
-void Vehicule::estConnecteAvec(const Vehicule* VB)
+bool Vehicule::estConnecteAvec(const Vehicule* VB) const
 {
     int t = vehiclesConnectes.size();
     int i = 0;
     while(i < t)
     {
-        if(vehiclesConnectes[i].id == VB.id)
+        if(vehiclesConnectes[i]->id == VB->id)
         {
             return true;
         }

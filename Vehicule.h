@@ -26,7 +26,7 @@ class Vehicule
         double puissance;
         double frequence;
         //liste des véhicules à qui il s'est connecté
-        std::vector<Vehicle*> vehiclesConnectes;
+        std::vector<Vehicule*> vehiclesConnectes;
 };
 
 #endif // VEHICULE_H
