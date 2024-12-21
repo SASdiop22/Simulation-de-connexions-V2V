@@ -9,10 +9,6 @@ class hexagone
 {
     public:
         hexagone(point p, double rayon);
-//        //abscisse du centre
-//        double getX();
-//        //ordonnée du centre
-//        double getY();
         point getCentre() const;
         //rayon de l'hexagone
         double getRayon();
