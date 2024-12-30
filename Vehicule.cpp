@@ -4,10 +4,11 @@ Vehicule::Vehicule(int ident, double p, double f) : id{ident}, puissance{p}, fre
 {
 
 }
+
 int Vehicule::getId()
 { return id; }
 
-point Vehicule::getPosition()
+point Vehicule::getPosition() const
 { return position; }
 
 void Vehicule::setPosition(point val)

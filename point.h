@@ -1,7 +1,6 @@
 #ifndef POINT_H
 #define POINT_H
 
-#include<iosfwd>
 
 
 class point {
@@ -10,9 +9,9 @@ public:
 
   point(double x, double y);
 
-  double x()  const;
+  double x() const;
 
-  double y()  const;
+  double y() const;
 
   double distance(const point& p) const;
 
