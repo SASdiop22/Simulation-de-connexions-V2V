@@ -1,42 +1,35 @@
-#ifndef GRAPHEROUTIER_H_INCLUDED
-#define GRAPHEROUTIER_H_INCLUDED
-
+#ifndef GRAPHE_H
+#define GRAPHE_H
 
 #include "noeud.h"
 #include "arete.h"
-#include <vector>
-#include <unordered_map>
-#include <string>
+#include <QMap>
+#include <QVector>
+#include <QString>
+#include <QGraphicsScene>
 
-class GrapheRoutier {
+class graphe {
 private:
-    std::vector<Noeud> noeuds;
-    std::vector<Arete> aretes;
-    std::unordered_map<osmium::object_id_type, Noeud*> noeuds_map; // Pour un acc�s rapide aux n�uds
+    QMap<long long, noeud*> listeNoeuds; // Clé : ID du nœud
+    QVector<arete*> listeAretes;
 
 public:
-    // Constructeur
-    GrapheRoutier() = default;
+    graphe();
 
-    // M�thodes pour ajouter des n�uds et des ar�tes
-    void ajouterNoeud(const Noeud& n);
-    void ajouterArete(const Arete& a);
+    // Getters
+    QMap<long long, noeud*> getListeNoeuds() const;
+    QVector<arete*> getListeAretes() const;
 
-    // M�thodes pour r�cup�rer les n�uds et les ar�tes
-    const std::vector<Noeud>& getNoeuds() const;
-    const std::vector<Arete>& getAretes() const;
+    // Ajout
+    void ajouteNoeud(noeud* node);
+    void ajouteArete(arete* edge);
 
-    Noeud* getNoeud(osmium::object_id_type id) const;
+    // Méthode pour charger un fichier OSM
+    void chargerDepuisOSM(const QString& fichierOSM);
 
-    // M�thode pour afficher le graphe
-    void afficherGraphe() const;
+    void testerNoeudVoisins() const;
+    void afficherGraphe(QGraphicsScene* scene) const;
 
-    // M�thode pour trouver le chemin entre deux n�uds (par exemple, recherche en largeur)
-    //std::vector<Noeud*> trouverChemin(Noeud* depart, Noeud* arrivee);
-
-   // Noeud* getNoeudParId(osmium::object_id_type id);
 };
 
-
-
-#endif // GRAPHEROUTIER_H_INCLUDED
+#endif // GRAPHE_H
